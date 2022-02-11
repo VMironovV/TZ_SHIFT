@@ -51,18 +51,18 @@ public class ArgsParser {
                 data = args[0].charAt(1);
             }
         }
-        if(defaultSort){
+        if(!defaultSort){
             writer = new Writer(args[2]);
         }else{
             writer = new Writer(args[1]);
         }
         int i;
-        if(defaultSort){
+        if(!defaultSort){
             i = 3;
         }else{
             i = 2;
         }
-        for( ; i < args.length - 1; i++){
+        for( ; i < args.length; i++){
             Reader reader = new Reader(args[i]);
             readers.add(reader);
         }

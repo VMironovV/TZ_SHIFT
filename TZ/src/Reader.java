@@ -4,14 +4,15 @@ public class Reader {
 
     private File file;
 
-    public Reader(String filename) {
+    FileReader fr;
+
+    public Reader(String filename) throws FileNotFoundException {
         file = new File(filename);
+        fr = new FileReader(file);
     }
 
     public String read(){
         try {
-            //создаем объект FileReader для объекта File
-            FileReader fr = new FileReader(file);
             //создаем BufferedReader с существующего FileReader для построчного считывания
             BufferedReader reader = new BufferedReader(fr);
             // считаем сначала первую строку

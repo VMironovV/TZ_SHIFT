@@ -24,7 +24,7 @@ public class Parser {
             }
             Collections.sort(numbers);
             if (sort == 'a') {
-                writer.write(numbers.get(0));
+                writer.write(numbers.remove(0));
             } else {
                 writer.write(numbers.get(numbers.size() - 1));
             }

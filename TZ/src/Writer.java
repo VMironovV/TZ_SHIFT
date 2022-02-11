@@ -11,11 +11,11 @@ public class Writer {
     }
 
     public void write(Integer element){
-        try(FileWriter writer = new FileWriter(file, true))
+        try(FileWriter fWriter = new FileWriter(file, true))
         {
-            writer.write(element);
-            writer.append('\n');
-            writer.flush();
+            fWriter.write(element.toString());
+            fWriter.append('\n');
+            fWriter.flush();
         }
         catch(IOException e){
             System.out.println(e.getMessage());
