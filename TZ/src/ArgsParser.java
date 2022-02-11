@@ -3,6 +3,26 @@ import java.util.ArrayList;
 public class ArgsParser {
     private char sort;
 
+    public char getSort() {
+        return sort;
+    }
+
+    public char getData() {
+        return data;
+    }
+
+    public boolean isDefaultSort() {
+        return defaultSort;
+    }
+
+    public Writer getWriter() {
+        return writer;
+    }
+
+    public ArrayList<Reader> getReaders() {
+        return readers;
+    }
+
     private char data;
 
     private boolean defaultSort = false;
