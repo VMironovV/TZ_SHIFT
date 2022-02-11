@@ -1,6 +1,9 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ArgsParser {
+
     private char sort;
 
     public char getSort() {
@@ -29,26 +32,34 @@ public class ArgsParser {
 
     private Writer writer;
 
-    private String[] args;
+    private final String[] args;
 
-    private ArrayList<Reader> readers = new ArrayList<>();
+    private final ArrayList<Reader> readers = new ArrayList<>();
 
     public ArgsParser(String[] args) {
         this.args = args;
     }
 
-    public void argsParsing() {
+    public boolean argsParsing() throws IOException {
         switch (args[0]) {
             case "-a", "-d" -> {
                 sort = args[0].charAt(1);
                 switch (args[1]) {
-                    case "-s", "-i" -> data = args[1].charAt(1);
+                    case "-s", "-i" -> {
+                        data = args[1].charAt(1);
+                    }
+                    default -> {
+                        return false;
+                    }
                 }
             }
             case "-s", "-i" -> {
                 sort = 'a';
                 defaultSort = true;
                 data = args[0].charAt(1);
+            }
+            default -> {
+                return false;
             }
         }
         if(!defaultSort){
@@ -66,5 +77,6 @@ public class ArgsParser {
             Reader reader = new Reader(args[i]);
             readers.add(reader);
         }
+        return true;
     }
 }

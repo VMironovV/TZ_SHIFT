@@ -6,14 +6,16 @@ public class Writer {
 
     private File file;
 
-    public Writer(String filename) {
+    private final FileWriter fWriter;
+
+    public Writer(String filename) throws IOException {
         file = new File(filename);
+        fWriter = new FileWriter(file, false);
     }
 
-    public void write(Integer element){
-        try(FileWriter fWriter = new FileWriter(file, true))
-        {
-            fWriter.write(element.toString());
+    public void write(String element){
+        try{
+            fWriter.write(element);
             fWriter.append('\n');
             fWriter.flush();
         }

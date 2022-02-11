@@ -1,26 +1,22 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class Reader {
 
-    private File file;
+    private final File file;
 
-    FileReader fr;
+    private final Scanner in;
 
     public Reader(String filename) throws FileNotFoundException {
         file = new File(filename);
-        fr = new FileReader(file);
+        in = new Scanner(file);
     }
 
     public String read(){
-        try {
-            //создаем BufferedReader с существующего FileReader для построчного считывания
-            BufferedReader reader = new BufferedReader(fr);
-            // считаем сначала первую строку
-            return reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+        if(in.hasNextLine()){
+            return in.nextLine();
         }
+        return null;
     }
 
 
